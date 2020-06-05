@@ -15,12 +15,12 @@ Civilizacion::Civilizacion(string nombre)
 	this->cantCasas=2;
 	this->cantCuarteles=0;
 	this->cantEstablos=0;
-	listaHabitantes.push_back(Aldeano(100));
-	listaHabitantes.push_back(Aldeano(100));
-	listaHabitantes.push_back(Aldeano(100));
-	listaHabitantes.push_back(Aldeano(100));
-	listaHabitantes.push_back(Aldeano(100));
-	listaHabitantes.push_back(Jinete(100, 30));
+	listaHabitantes.push_back(new Aldeano(100));
+	listaHabitantes.push_back(new Aldeano(100));
+	listaHabitantes.push_back(new Aldeano(100));
+	listaHabitantes.push_back(new Aldeano(100));
+	listaHabitantes.push_back(new Aldeano(100));
+	listaHabitantes.push_back(new Jinete(100, 30));
 	
 	
 	
@@ -36,7 +36,7 @@ void Civilizacion::setNombre(string){
 }
 
 int Civilizacion::getCantOro(){
-	return 0;
+	return this->cantOro;
 }
 
 void Civilizacion::setCantOro(int cantOro){
@@ -45,7 +45,7 @@ void Civilizacion::setCantOro(int cantOro){
 }
 
 int Civilizacion::getCantMadera(){
-	return 0;
+	return this->cantMadera;
 }
 
 void Civilizacion::setCantMadera(int cantMadera){
@@ -63,7 +63,7 @@ void Civilizacion::setCantAlimento(int cantAlimento){
 }
 
 int Civilizacion::getCantHabitantes(){
-	return 0;
+	return this->cantHabitantes;
 }
 
 void Civilizacion::setCantHabitantes(int cantHabitantes){
@@ -71,14 +71,14 @@ void Civilizacion::setCantHabitantes(int cantHabitantes){
 }
 
 int Civilizacion::getCantCasas(){
-	return 0;
+	return this->cantCasas;
 }
 
 void Civilizacion::setCantCasas(int cantCasas){
 	this->cantCasas=cantCasas;
 }
 int Civilizacion::getCantCuarteles(){
-	return 0;
+	return this->cantCuarteles;
 }
 
 void Civilizacion::setCantCuarteles(int cantCuarteles){
@@ -86,7 +86,7 @@ void Civilizacion::setCantCuarteles(int cantCuarteles){
 }
 
 int Civilizacion::getCantEstablos(){
-	return 0;
+	return this->cantCuarteles;
 }
 
 void Civilizacion::setCantEstablos(int cantEstablos){
@@ -106,13 +106,15 @@ void Civilizacion::sumarEstablos(){
 }
 
 
-void  Civilizacion::sumarHabitante(Habitantes habitante){
+void  Civilizacion::sumarHabitante(Habitantes* habitante){
+	
 	listaHabitantes.push_back(habitante);
 }
 
-vector<Habitantes>  Civilizacion::getHabitantes(){
+vector<Habitantes*> Civilizacion::getHabitantes(){
 	return this->listaHabitantes;
 }
+
 
 Civilizacion::~Civilizacion()
 {

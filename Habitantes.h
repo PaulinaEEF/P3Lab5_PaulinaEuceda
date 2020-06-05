@@ -9,9 +9,12 @@ class Habitantes
 		int getValorVida();
 		void setValorVida(int);
 		
-		~Habitantes();
+		int getCantHoras();
+		void setCantHoras(int);
+		
+		virtual ~Habitantes();
 	protected:
-		int valorVida;
+		int valorVida, cantHoras;
 };
 
 #endif
