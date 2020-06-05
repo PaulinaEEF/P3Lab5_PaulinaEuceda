@@ -48,6 +48,12 @@ int main(int argc, char** argv) {
 					<<"8. Ir a guerra"<<endl
 					<<"9. Siguiente hora"<<endl
 					<<"10. Salir"<<endl;
+					
+				int menuJugar;		
+				cout<<"Ingrese la opcion que desea: ";
+				cin >> menuJugar;
+				
+				
 				//empleados.erase(empleados.begin() + despedirPos);
 				break;
 			}
