@@ -4,6 +4,10 @@ Caballero::Caballero(int valorVida, int valorAtaque):Guerrero(valorVida, valorAt
 {
 }
 
+void Caballero::atacar(){
+	
+}
+
 Caballero::~Caballero()
 {
 }

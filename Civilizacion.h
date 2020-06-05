@@ -2,7 +2,6 @@
 #define CIVILIZACION_H
 #include <vector>
 #include<iostream>
-#include "Habitantes.h"
 #include "Aldeano.h"
 #include "Jinete.h"
 #include "Caballero.h"
@@ -40,13 +39,13 @@ class Civilizacion
 		void sumarEstablos();
 		
 		void sumarHabitante(Habitantes);
-		vector<Habitantes*> getHabitantes();
+		vector<Habitantes> getHabitantes();
 		
 		~Civilizacion();
 	protected:
 		string nombre;
 		int cantOro, cantMadera, cantAlimento, cantHabitantes;
-		vector<Habitantes*> listaHabitantes;
+		vector<Habitantes> listaHabitantes;
 		int cantCasas, cantCuarteles, cantEstablos;
 };
 

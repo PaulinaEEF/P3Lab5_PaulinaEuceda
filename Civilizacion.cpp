@@ -15,82 +15,103 @@ Civilizacion::Civilizacion(string nombre)
 	this->cantCasas=2;
 	this->cantCuarteles=0;
 	this->cantEstablos=0;
-	listaHabitantes.push_back(new Aldeano(100));
-	listaHabitantes.push_back(new Aldeano(100));
-	listaHabitantes.push_back(new Aldeano(100));
-	listaHabitantes.push_back(new Aldeano(100));
-	listaHabitantes.push_back(new Aldeano(100));
-	listaHabitantes.push_back(new Jinete(100, 30));
+	listaHabitantes.push_back(Aldeano(100));
+	listaHabitantes.push_back(Aldeano(100));
+	listaHabitantes.push_back(Aldeano(100));
+	listaHabitantes.push_back(Aldeano(100));
+	listaHabitantes.push_back(Aldeano(100));
+	listaHabitantes.push_back(Jinete(100, 30));
 	
 	
 	
 }
 
 string Civilizacion::getNombre(){
-	
+	return this->nombre;
 }
+
 void Civilizacion::setNombre(string){
+	this->nombre=nombre;
 	
 }
+
 int Civilizacion::getCantOro(){
-	
+	return 0;
 }
-void Civilizacion::setCantOro(int){
+
+void Civilizacion::setCantOro(int cantOro){
+	this->cantOro=cantOro;
 	
 }
 
 int Civilizacion::getCantMadera(){
+	return 0;
+}
+
+void Civilizacion::setCantMadera(int cantMadera){
+	this->cantMadera=cantMadera;
 	
 }
-void Civilizacion::setCantMadera(int){
-	
-}
+
 int Civilizacion::getCantAlimento(){
 	return this->cantAlimento;
 }
-void Civilizacion::setCantAlimento(int){
+
+void Civilizacion::setCantAlimento(int cantAlimento){
+	this->cantAlimento=cantAlimento;
 	
 }
+
 int Civilizacion::getCantHabitantes(){
-	
+	return 0;
 }
-void Civilizacion::setCantHabitantes(int){
-	
+
+void Civilizacion::setCantHabitantes(int cantHabitantes){
+	this->cantHabitantes=cantHabitantes;
 }
+
 int Civilizacion::getCantCasas(){
-	
+	return 0;
 }
-void Civilizacion::setCantCasas(int){
-	
+
+void Civilizacion::setCantCasas(int cantCasas){
+	this->cantCasas=cantCasas;
 }
 int Civilizacion::getCantCuarteles(){
-	
+	return 0;
 }
-void Civilizacion::setCantCuarteles(int){
-	
+
+void Civilizacion::setCantCuarteles(int cantCuarteles){
+	this->cantCuarteles=cantCuarteles;
 }
+
 int Civilizacion::getCantEstablos(){
-	
+	return 0;
 }
-void Civilizacion::setCantEstablos(int){
-	
+
+void Civilizacion::setCantEstablos(int cantEstablos){
+	this->cantEstablos=cantEstablos;
 }
 
 void Civilizacion::sumarCasas(){
-	
-}
-void Civilizacion::sumarCuarteles(){
-	
-}
-void Civilizacion::sumarEstablos(){
-	
+	this->cantCasas++;
 }
 
-void sumarHabitante(Habitantes){
-	
+void Civilizacion::sumarCuarteles(){
+	this->cantCuarteles++;
 }
-vector<Habitantes*> getHabitantes(){
-	
+
+void Civilizacion::sumarEstablos(){
+	this->cantEstablos++;
+}
+
+
+void  Civilizacion::sumarHabitante(Habitantes habitante){
+	listaHabitantes.push_back(habitante);
+}
+
+vector<Habitantes>  Civilizacion::getHabitantes(){
+	return this->listaHabitantes;
 }
 
 Civilizacion::~Civilizacion()
