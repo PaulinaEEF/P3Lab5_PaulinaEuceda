@@ -4,7 +4,7 @@ Jinete::Jinete(int valorVida, int valorAtaque):Guerrero(valorVida, valorAtaque)
 {
 }
 
-void Jinete::atacar(){
+void Jinete::atacar(Habitantes){
 	
 }
 

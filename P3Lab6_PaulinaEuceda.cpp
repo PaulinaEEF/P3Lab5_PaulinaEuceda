@@ -19,11 +19,20 @@ using std::endl;
 using std::string;
 
 int main(int argc, char** argv) {
-	vector<Habitantes*> listaHabitantesMain;
+	int eleccionCivilizacion;
 	vector<Civilizacion*> listaCivilizacion;
+	
+	vector<Habitantes*> listaHabitantesPendientes;
+	listaHabitantesPendientes.push_back(new Jinete(100, 30));
+	
+	listaHabitantesPendientes.push_back(new Aldeano(100));
+	listaHabitantesPendientes[0]->setCantHoras(0);
+	listaHabitantesPendientes[1]->setCantHoras(0);
+	
 	listaCivilizacion.push_back(new Civilizacion("Los Palomeros"));
 	listaCivilizacion.push_back(new Civilizacion("Tajada Crujiente"));
 	listaCivilizacion.push_back(new Civilizacion("Acaso no lo viste venir?"));
+	
 	
 	bool control_salidaMenuPrincipal=true;
 	int numeroRandom, opcion;
@@ -60,7 +69,7 @@ int main(int argc, char** argv) {
 					cout<<i<<") "<<listaCivilizacion[i]->getNombre()<<endl;
 				}
 				cout<<"Elija el inidice de una civilizacion: ";
-				int eleccionCivilizacion;
+				eleccionCivilizacion;
 				cin >> eleccionCivilizacion;
 				
 				while(eleccionCivilizacion>=listaCivilizacion.size()){
@@ -92,26 +101,22 @@ int main(int argc, char** argv) {
 								cout<<"Ya no hay suficientes casas para alojar al aldeano. Cree nuevas casas"<<endl;
 								
 							}else{
-								listaCivilizacion[eleccionCivilizacion]->sumarHabitante(new Aldeano(100));
+								//listaCivilizacion[eleccionCivilizacion]->sumarHabitante();
+								listaHabitantesPendientes.push_back(new Aldeano(100));
+								listaHabitantesPendientes[listaHabitantesPendientes.size()]->setCantHoras(0);
 							}
 							break;
 						}
 						case 2:{
 							int cantJinetes_enLista=0;
 							
-//							for(int i = 0; i<listaCivilizacion.size(); i++){
-//								cout<<"antes del desastre"<<endl;
-//								cout<<listaCivilizacion[eleccionCivilizacion]->getHabitantes().size()<<endl;
-//								Habitantes *pP = dynamic_cast<Jinete*>(listaCivilizacion[eleccionCivilizacion]->getHabitantes()[i]);
-//								if(pP != 0){
-//									cantJinetes_enLista++;
-//								}
-//							}
 							if(listaCivilizacion[eleccionCivilizacion]->getCantEstablos()==0){
 								cout<<"Ya no hay suficientes establos para alojar al caballo del jinete. Cree nuevo establo"<<endl;
 								
 							}else{
-								listaCivilizacion[eleccionCivilizacion]->sumarHabitante(new Jinete(100, 30));
+								//listaCivilizacion[eleccionCivilizacion]->sumarHabitante(new Jinete(100, 30));
+								listaHabitantesPendientes.push_back(new Jinete(100, 30));
+								listaHabitantesPendientes[listaHabitantesPendientes.size()]->setCantHoras(0);
 							}
 							break;
 						}
@@ -120,7 +125,10 @@ int main(int argc, char** argv) {
 								cout<<"Ya no hay suficientes cuarteles. Cree uno nuevo."<<endl;
 								
 							}else{
-								listaCivilizacion[eleccionCivilizacion]->sumarHabitante(new Arquero(100, 20));
+								//listaCivilizacion[eleccionCivilizacion]->sumarHabitante(new Arquero(100, 20));
+								listaHabitantesPendientes.push_back(new Arquero(100, 20));
+								listaHabitantesPendientes[listaHabitantesPendientes.size()]->setCantHoras(0);
+								cout<<"Creado con exito!"<<endl;
 							}
 							break;
 						}
@@ -129,7 +137,9 @@ int main(int argc, char** argv) {
 								cout<<"Ya no hay suficientes cuarteles. Cree uno nuevo."<<endl;
 								
 							}else{
-								listaCivilizacion[eleccionCivilizacion]->sumarHabitante(new Caballero(100, 10));
+								//listaCivilizacion[eleccionCivilizacion]->sumarHabitante(new Caballero(100, 10));
+								listaHabitantesPendientes.push_back(new Caballero(100, 10));
+								listaHabitantesPendientes[listaHabitantesPendientes.size()]->setCantHoras(0);
 								cout<<"Creado con exito!"<<endl;
 							}
 							break;
@@ -170,10 +180,103 @@ int main(int argc, char** argv) {
 							break;
 						}
 						case 8:{
+							for(int i=0; i<listaCivilizacion.size(); i++){
+								cout<<i<<") "<<listaCivilizacion[i]->getNombre()<<endl;
+							}
+							cout<<"Elija el inidice de una civilizacion a quien atacar: ";
+							int civilizacionElegidaAtacar;
+							cin >> civilizacionElegidaAtacar;
 							
+							while(eleccionCivilizacion == civilizacionElegidaAtacar){
+								cout<<"Dudo que se quiera atacar a usted mismo. Elija otra: ";
+								cin >> civilizacionElegidaAtacar;
+							}
+							
+							bool yanotengoideasparavariablessignificativas=true;
+							while(yanotengoideasparavariablessignificativas){
+								cout<<"1) Emparejar"<<endl;
+								cout<<"2) Abandonar"<<endl<<"Ingrese la opcion que desea: ";
+								int opcion;
+								cin >> opcion;
+								
+								switch(opcion){
+									case 1:{
+										cout<<listaCivilizacion[eleccionCivilizacion]->getHabitantes().size()<<endl;
+										for(int i=0; i<listaCivilizacion[eleccionCivilizacion]->getHabitantes().size(); i++){
+											Habitantes* hab = listaCivilizacion[eleccionCivilizacion]->getHabitantes()[i];
+											
+											Aldeano* pA = dynamic_cast<Aldeano*>(hab);
+											//Persona *pP = dynamic_cast<Alumno*>(personas[i]);
+											//cout<< hab->getCantHoras()<<" horas"<<endl;
+											if(pA == NULL){
+												
+												
+											}else{
+												cout<<"else"<<endl;
+											}										
+											
+										}
+										cout<<"Imaginemos que pelean"<<endl;
+										break;
+									}
+									case 2:{
+										yanotengoideasparavariablessignificativas = false;
+										break;
+									}
+								}
+								
+								
+								
+							}
 							break;
 						}
 						case 9:{
+							cout<<"--Resumen General--"<<endl;
+							cout<<"Cantidad de madera: "<<listaCivilizacion[eleccionCivilizacion]->getCantMadera()<<endl;
+							cout<<"Cantidad de oro: "<<listaCivilizacion[eleccionCivilizacion]->getCantOro()<<endl;
+							cout<<"Cantidad de alimentos: "<<listaCivilizacion[eleccionCivilizacion]->getCantAlimento()<<endl;
+							cout<<"Cantidad de habitantes: "<<listaCivilizacion[eleccionCivilizacion]->getCantHabitantes()<<endl;
+							cout<<"Capacidad de habitantes: "<<listaCivilizacion[eleccionCivilizacion]->getCantCasas()*5<<endl;
+							
+							cout<<"--Resumen de Horas--"<<endl;//no funciona :(
+							cout<<listaHabitantesPendientes.size()<<endl;
+							for(int i = 0; i<listaHabitantesPendientes.size(); i++){
+//								Habitantes* pJinete = dynamic_cast<Jinete*>(listaHabitantesPendientes[i]);
+//								if(pJinete != 0){
+//									cout<<"Jinete. Horas: "<<listaHabitantesPendientes[i]->getCantHoras()<<endl;
+//									
+//									
+//								}
+//								
+//								Aldeano* pAldeano = dynamic_cast<Aldeano*>(listaHabitantesPendientes[i]);
+////								cout<<pAldeano<<endl;
+//								if(pAldeano != 0){
+//									cout<<"Aldeano. Horas: "<<listaHabitantesPendientes[i]->getCantHoras()<<endl;
+//									listaHabitantesPendientes.erase(listaHabitantesPendientes.begin() + i);
+//									listaCivilizacion[eleccionCivilizacion]->sumarHabitante(listaHabitantesPendientes[i]);
+//									
+//								}
+//								Arquero* pArquero = dynamic_cast<Arquero*>(listaHabitantesPendientes[i]);
+//								if(pAldeano != 0){
+//									cout<<"Arquero. Horas: "<<listaHabitantesPendientes[i]->getCantHoras()<<endl;
+//								}
+//								Caballero* pCaballero = dynamic_cast<Caballero*>(listaHabitantesPendientes[i]);
+//								if(pCaballero != 0){
+//									cout<<"Caballero. Horas: "<<listaHabitantesPendientes[i]->getCantHoras()<<endl;
+//								}
+								
+								
+								//listaHabitantesPendientes.erase(listaHabitantesPendientes.begin() + i);
+							}
+							
+//							for(int i = 0; i<listaCivilizacion.size(); i++){
+//								cout<<"antes del desastre"<<endl;
+//								cout<<listaCivilizacion[eleccionCivilizacion]->getHabitantes().size()<<endl;
+//								Habitantes *pP = dynamic_cast<Jinete*>(listaCivilizacion[eleccionCivilizacion]->getHabitantes()[i]);
+//								if(pP != 0){
+//									cantJinetes_enLista++;
+//								}
+//							}							
 							
 							break;
 						}
@@ -184,7 +287,7 @@ int main(int argc, char** argv) {
 						
 						
 					}
-					
+					cout<<endl<<endl;
 				}
 				
 				

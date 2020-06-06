@@ -10,7 +10,8 @@ class Guerrero : public Habitantes
 		
 		int getValorAtaque();
 		void setValorAtaque(int);
-		virtual void atacar() = 0;
+		
+		virtual void atacar(Habitantes)=0;
 		
 		~Guerrero();
 	protected:

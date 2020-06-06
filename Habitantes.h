@@ -7,6 +7,7 @@ class Habitantes
 		Habitantes(int);
 		
 		int getValorVida();
+		
 		void setValorVida(int);
 		
 		int getCantHoras();

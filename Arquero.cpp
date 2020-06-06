@@ -4,7 +4,9 @@ Arquero::Arquero(int valorVida, int valorAtaque):Guerrero(valorVida, valorAtaque
 {
 }
 
-void Arquero::atacar(){
+void Arquero::atacar(Habitantes){
+	
+	
 	
 }
 

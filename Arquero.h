@@ -7,7 +7,7 @@ class Arquero : public Guerrero
 {
 	public:
 		Arquero(int, int);
-		void atacar();
+		void atacar(Habitantes);
 		~Arquero();
 	protected:
 };

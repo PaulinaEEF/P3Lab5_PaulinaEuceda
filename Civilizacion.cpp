@@ -118,4 +118,7 @@ vector<Habitantes*> Civilizacion::getHabitantes(){
 
 Civilizacion::~Civilizacion()
 {
+	for(int i = 0; i<listaHabitantes.size(); i++){
+		listaHabitantes.erase(listaHabitantes.begin() + i);
+	}
 }

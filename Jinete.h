@@ -7,7 +7,7 @@ class Jinete : public Guerrero
 {
 	public:
 		Jinete(int, int);
-		void atacar();
+		void atacar(Habitantes);
 		~Jinete();
 	protected:
 };

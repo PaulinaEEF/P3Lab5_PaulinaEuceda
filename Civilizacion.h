@@ -39,6 +39,7 @@ class Civilizacion
 		void sumarEstablos();
 		
 		void sumarHabitante(Habitantes*);
+		
 		vector<Habitantes*> getHabitantes();
 		
 		~Civilizacion();
